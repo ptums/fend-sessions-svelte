@@ -1,9 +1,9 @@
 <script>
  let isMobileOpen = false;
-
- const openMenu = () => {
-    isMobileOpen = !isMobileOpen;
- };
+  import FaBars from 'svelte-icons/fa/FaBars.svelte'
+  import FaTimes from 'svelte-icons/fa/FaTimes.svelte'
+  const openMenu = () => { isMobileOpen = !isMobileOpen;};
+  const closeMenu = () => { isMobileOpen = false }
 
  const menuItems = [
   {
@@ -44,12 +44,43 @@
             {item.label}
 		      </a>
         </li>
-	{/each}
-</ul>
+      {/each}
+    </ul>
+
   </div>
   </div>
 </nav>
 
-<button on:click={openMenu}>
- Open {isMobileOpen}
+<button
+  class="block w-12 h-12 relative rounded left-2 top-2 bg-white p-2 sm:hidden" 
+  on:click={openMenu}
+>
+  {#if isMobileOpen}
+    <FaTimes />	
+  {:else}
+    <FaBars />
+  {/if}
  </button>
+ {#if isMobileOpen}
+  <div class="bg-white absolute top-0 left-0 w-full min-h-screen">
+    <div class="w-full flex justify-end">
+      <button class="w-12 h-12 relative right-2 top-2" on:click={closeMenu}>
+        <FaTimes />
+      </button>
+    </div>
+     <ul class="ml-6 text-xl flex flex-col">
+      {#each menuItems as item}
+        <li class="mb-8">
+         <a 
+            class="hover:underline"
+            href={item.url}>
+            
+            {item.label}
+		      </a>
+        </li>
+      {/each}
+    </ul>
+  
+  </div>
+{/if}
+
