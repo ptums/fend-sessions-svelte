@@ -34,7 +34,6 @@
 
 <script>
    export let tutorials;
-   console.log({ tutorials })
    const sortedTutorials = tutorials.sort((a,b) => a?.category.trim().toLowerCase() > b?.category.trim().toLowerCase() ? 1 : -1);
    import TutorialCard from '../components/cards/tutorialcard.svelte';
 </script>

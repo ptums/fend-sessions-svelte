@@ -1,5 +1,5 @@
 export const generateLabelColors = (type: string) => {
-	const typeTrimmed = type;
+	const typeTrimmed = type?.trim();
 	switch (typeTrimmed) {
 		case 'CSS':
 			return 'bg-green-100 text-green-800';
@@ -23,7 +23,7 @@ export const generateLabelColors = (type: string) => {
 };
 
 export const generateLabel = (type: string) => {
-	const typeTrimmed = type;
+	const typeTrimmed = type?.trim();
 
 	switch (typeTrimmed) {
 		case 'Intro':
